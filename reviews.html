@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reviews — PERMA Permanent Makeup</title>
+<meta name="description" content="What clients say about PERMA in Brickell, Miami." />
+<link rel="canonical" href="https://your-domain.com/reviews.html" />
+<link rel="icon" href="/img/5.png" type="image/png" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="site-header" data-elevate>
+<div class="container header-inner">
+<a href="/index.html" class="logo" aria-label="PERMA — Home"><img src="/img/4.png" alt="PERMA Logo"></a>
+<nav class="nav" aria-label="Main navigation">
+<button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+<ul id="primary-menu" class="menu">
+<li><a href="/services.html">Services</a></li>
+<li><a href="/portfolio.html">Portfolio</a></li>
+<li><a href="/pricing.html">Pricing</a></li>
+<li><a href="/course.html">Training</a></li>
+<li><a href="/reviews.html" aria-current="page">Reviews</a></li>
+<li><a href="/policies.html">Policies</a></li>
+<li><a href="/contacts.html">Contact</a></li>
+<li><a href="/quiz.html" class="btn btn--sm">Book</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- ===== REVIEWS (HORIZONTAL SLIDER, FULL-WIDTH) ===== -->
+<section class="reviews-section">
+  <div class="reviews-inner">
+    <header class="section-header" style="text-align:center; margin-bottom:32px;">
+      <h2 class="section-title">What our students say</h2>
+      <p class="section-subtitle">Real feedback from PMU trainees who completed our courses</p>
+    </header>
+
+    <div class="reviews-slider">
+      <button class="review-arrow left" id="reviewLeft" aria-label="Previous review">‹</button>
+
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card">
+          <p class="review-text">“The training was absolutely amazing! I learned so much in just a few days. Highly recommend to anyone serious about PMU.”</p>
+          <p class="review-author">— Sofia M., Miami</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">“Very professional and friendly atmosphere. I loved how personalized the approach was — it felt like one-on-one mentorship.”</p>
+          <p class="review-author">— Laura G., New York</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">“Best investment I’ve made in my career. The techniques and attention to detail changed my work completely.”</p>
+          <p class="review-author">— Vanessa R., Los Angeles</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">“I already had some experience, but this course took my skills to a new level. Now I feel confident working with clients.”</p>
+          <p class="review-author">— Ana B., Chicago</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">“Perfect balance between theory and hands-on. The support even after the course ended was so helpful.”</p>
+          <p class="review-author">— Maria D., Houston</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">“I came all the way from Europe and it was 100% worth it. Great energy, high standards, and detailed feedback.”</p>
+          <p class="review-author">— Ivana K., Prague</p>
+        </div>
+      </div>
+
+      <button class="review-arrow right" id="reviewRight" aria-label="Next review">›</button>
+
+      <!-- gradient fade on edges -->
+      <div class="reviews-fade fade-left"></div>
+      <div class="reviews-fade fade-right"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="site-footer"><div class="container footer-inner"><p>© <span id="year"></span> PERMA — Anatomy Permanent Makeup</p><a href="#top" class="to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1558 @@
+:root{
+  --bg:#0f0f10;--bg-alt:#151517;--accent:#e7b2a6;--accent-2:#ffd3ca;
+  --text:#f8f8f8;--muted:#bdbdbf;--card:#1c1c1f;
+  --success:#7bd389;--error:#ff6b6b;--maxw:1180px;--radius:18px;--shadow:0 10px 30px rgba(0,0,0,.35)
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);background:var(--bg);line-height:1.6;letter-spacing:.2px
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.container{width:min(100% - 2rem,var(--maxw));margin-inline:auto}
+.section{padding:88px 0}
+.section--alt{background:var(--bg-alt)}
+.section--accent{background:linear-gradient(180deg,#1a1a1c 0%,#141416 100%);position:relative;overflow:hidden}
+.section-header{text-align:center;margin-bottom:36px}
+.section-title{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0 0 10px}
+.section-subtitle{color:var(--muted);margin:0}
+
+/* Header / Nav */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(15,15,16,.6);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .25s ease, box-shadow .3s ease, background .3s ease}
+.site-header[data-elevated="true"]{box-shadow:var(--shadow);background:rgba(15,15,16,.9)}
+.site-header.is-hidden{transform:translateY(-100%)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.logo{display:flex;align-items:center;position:relative;z-index:10}
+.logo img{height:70px;width:auto;display:block;margin-top:-10px}
+.nav{margin-top:-3px}
+.nav .menu{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0}
+.nav .menu a{color:var(--muted);transition:color .2s ease}
+.nav .menu a:hover,.nav .menu a:focus,.nav .menu a[aria-current="page"]{color:var(--text)}
+.nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:transparent}
+.nav-toggle .bar{width:22px;height:2px;background:var(--text);display:block;margin:3px 0;border-radius:2px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.14);transition:transform .15s ease, background .3s ease, color .3s ease}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--accent);color:#1b1b1c;border:none}
+.btn--ghost{background:transparent;color:var(--text)}
+.btn--sm{padding:10px 14px;font-size:14px}
+
+/* Hero */
+.hero{position:relative;min-height:92svh;display:grid;place-items:center;text-align:center}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(.95) brightness(.6);transform:scale(1.05)}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(1200px 600px at 50% 20%, rgba(231,178,166,.25), transparent 60%), linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.6))}
+.hero-content{position:relative;z-index:1;padding:0 1rem}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.hero-badges{list-style:none;padding:0;margin:20px 0 0;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;color:var(--muted)}
+.scroll-indicator{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:10px 14px;color:var(--text);animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+
+/* Grids / Cards */
+.grid{display:grid;gap:22px}
+.cards-4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px;box-shadow:0 1px 0 rgba(255,255,255,.04) inset;transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.card-icon{font-size:24px}
+.card-title{margin:10px 0 6px;font-size:18px}
+.card-text{color:var(--muted);margin:0 0 12px}
+.list{margin:0;padding-left:18px;color:var(--muted)}
+.list.tight li{margin-bottom:6px}
+
+/* Gallery */
+.gallery{grid-template-columns:repeat(3,1fr)}
+.gallery-item{border:none;padding:0;background:transparent;border-radius:16px;overflow:hidden;position:relative;cursor:zoom-in;isolation:isolate}
+.gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.45));opacity:0;transition:opacity .25s ease}
+.gallery-item:hover::after{opacity:1}
+.gallery-item img{aspect-ratio:4/5;object-fit:cover;object-position:center top;transition:transform .5s ease}
+.gallery-item:hover img{transform:scale(1.04)}
+.lightbox{width:min(92vw,1100px);border:none;border-radius:16px;padding:0;background:transparent}
+.lightbox::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}
+.lightbox-img{width:100%;height:auto;display:block;border-radius:16px}
+.lightbox-close{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:999px;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:22px;cursor:pointer}
+
+/* Pricing */
+.price-table{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:10px}
+.price-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;padding:14px 12px;align-items:center;border-bottom:1px dashed rgba(255,255,255,.08)}
+.price-row:last-of-type{border-bottom:none}
+.price-row .price{font-weight:700;color:var(--accent-2);display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price-sub{font-weight:500;color:var(--muted);font-size:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);padding:2px 8px;border-radius:999px;line-height:1.4}
+.price-note{color:var(--muted);padding:0 12px 10px;font-size:14px}
+
+/* Testimonials */
+.testimonials{grid-template-columns:repeat(3,1fr)}
+.testimonial{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px}
+.testimonial blockquote{margin:0 0 10px;font-weight:500}
+.testimonial figcaption{color:var(--muted)}
+
+/* Forms / Fields */
+.field{display:grid;gap:8px}
+.field span{color:var(--muted);font-size:14px}
+input,select,textarea{width:100%;background:#101012;border:1px solid rgba(255,255,255,.12);color:var(--text);border-radius:12px;padding:12px 14px;outline:none;transition:border .2s ease, box-shadow .2s ease}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(231,178,166,.15)}
+.error{color:var(--error);min-height:18px}
+.form-success{margin-top:10px;color:var(--success);font-weight:600}
+
+/* Accordion */
+.acc-item{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 14px}
+.acc-summary{cursor:pointer;list-style:none;font-weight:600}
+.acc-summary::-webkit-details-marker{display:none}
+.acc-content{color:var(--muted);padding-top:8px}
+
+/* Contacts */
+.contacts{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
+.contacts .link{color:var(--accent-2)}
+.socials{display:flex;gap:10px;margin-top:10px}
+.social{width:42px;height:42px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.social svg{width:18px;height:18px;fill:var(--text);opacity:.85}
+
+/* Footer */
+.site-footer{border-top:1px solid rgba(255,255,255,.08);padding:18px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.to-top{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+
+/* Reveal animations */
+.reveal-up{opacity:0;transform:translateY(14px)}
+.reveal-fade{opacity:0}
+.revealed{opacity:1!important;transform:none!important;transition:opacity .8s ease, transform .8s ease}
+.revealed.delay-1{transition-delay:.1s}
+.revealed.delay-2{transition-delay:.2s}
+.revealed.delay-3{transition-delay:.3s}
+
+/* Visually hidden (SEO/AT) */
+.visually-hidden{
+  position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;border:0!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important
+}
+
+/* Course */
+.course-promo{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px}
+.course-image img{border-radius:var(--radius);box-shadow:var(--shadow)}
+.course-content .list{margin:18px 0;padding-left:20px;color:var(--text)}
+.course-content .list li{margin-bottom:6px}
+.course-price{font-weight:600;color:#fff;margin-top:10px;margin-bottom:20px}
+.course-price strong{font-size:20px}
+
+/* Before/After slider */
+.ba-grid{display:grid;gap:20px}
+.ba-wrap{width:100%;margin:0}
+.ba-caption{color:var(--muted);text-align:center;margin:8px 0 0;font-size:13px}
+.ba-slider{position:relative;overflow:hidden;width:100%;border-radius:12px;box-shadow:var(--shadow);aspect-ratio:4 / 3}
+.ba-slider>img,.ba-slider .resize img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}
+.ba-slider .resize{position:absolute;inset:0;width:100%;height:100%;clip-path:polygon(0 0, var(--pos,50%) 0, var(--pos,50%) 100%, 0 100%)}
+.ba-slider .handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:var(--accent);cursor:ew-resize;box-shadow:0 0 0 2px rgba(0,0,0,.2)}
+.ba-slider .handle::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:999px;background:var(--accent);box-shadow:var(--shadow)}
+
+/* Quiz */
+.quiz-wrap{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:30px}
+.quiz-visual img{border-radius:var(--radius);box-shadow:var(--shadow)}
+.quiz-title{margin:0 0 14px}
+.quiz-sub{margin:0 0 16px;color:var(--muted)}
+.quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.chip{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--text);padding:12px 14px;border-radius:12px;cursor:pointer;text-align:left;font-weight:500}
+.chip.active{background:var(--accent);color:#1b1b1c;border-color:var(--accent)}
+.quiz-nav{display:flex;gap:12px;margin-top:18px}
+.quiz-step{display:none}
+.quiz-step.is-active{display:block}
+.quiz-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.quiz-bar{flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.quiz-bar__fill{display:block;height:100%;background:var(--accent);width:0%}
+.quiz-step-count{color:var(--muted);font-size:14px}
+.quiz-form .btn{margin-top:4px}
+.quiz-nav .btn[disabled],#quizSubmit[disabled]{opacity:.45;cursor:not-allowed}
+.quiz-nav #quizNext.is-hidden{display:none!important}
+.quiz-branch[hidden]{display:none!important}
+.btn[disabled]{opacity:.5;cursor:not-allowed;pointer-events:none}
+
+/* Notice banner (pricing deposit) */
+.notice-banner{
+  display:flex;align-items:center;gap:12px;max-width:860px;margin:0 auto 16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:10px 14px;box-shadow:0 1px 0 rgba(255,255,255,.04) inset;position:relative
+}
+.nb-side{position:relative;display:grid;place-items:center}
+.nb-tip{display:grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(231,178,166,.18);color:var(--accent);border:1px solid rgba(255,255,255,.08);cursor:help}
+.nb-tip:focus{outline:none;box-shadow:0 0 0 3px rgba(231,178,166,.25)}
+.tooltip{
+  position:absolute;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%) translateY(8px);
+  width:420px;max-width:90vw;background:rgba(28,28,31,.98);color:var(--text);
+  border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px 18px;font-size:14px;line-height:1.5;
+  box-shadow:0 4px 16px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .22s ease, transform .22s ease;transform-origin:bottom center;text-align:center
+}
+.nb-tip:hover + .tooltip,.nb-tip:focus + .tooltip,.nb-tip:focus-visible + .tooltip{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.tooltip::before{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:inherit;border-right:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10)}
+.kicker{color:var(--accent-2);text-transform:uppercase;letter-spacing:.12em;font-size:12px;margin:0 0 6px}
+
+/* Bottom CTA / nav */
+.bottom-nav{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:flex;gap:10px;justify-content:center;align-items:center;
+  padding:10px;background:rgba(28,28,31,.9);border:1px solid rgba(255,255,255,.10);border-radius:14px;backdrop-filter:blur(6px);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(120%);opacity:0;pointer-events:none;transition:transform .25s ease, opacity .25s ease
+}
+.bottom-nav.is-visible{transform:translateY(0);opacity:1;pointer-events:auto}
+.bottom-link{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-weight:500;color:var(--text)}
+.bottom-book{padding:12px 16px;border-radius:999px;border:none;background:var(--accent);color:#1b1b1c;font-weight:700;cursor:pointer}
+@media (max-width:480px){.bottom-link{display:none}}
+
+/* Page-specific background tweaks */
+#services{background:var(--bg)!important}
+#portfolio{background:var(--bg-alt)!important}
+#before-after{background:var(--bg-alt)!important}
+#contacts{background:#0b0b0c!important}
+#pricing{background:#0b0b0c!important}
+#pricing.section--alt,#pricing.section--accent{background:var(--bg)!important}
+
+/* Content-visibility perf */
+@supports (content-visibility:auto){
+  #portfolio .gallery,#before-after .ba-grid,#policies article.card{content-visibility:auto;contain-intrinsic-size:1000px}
+}
+
+/* Responsive */
+@media (max-width:1000px){
+  .cards-4{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .testimonials{grid-template-columns:1fr 1fr}
+  .contacts{grid-template-columns:1fr}
+}
+@media (max-width:800px){
+  .course-promo{grid-template-columns:1fr;text-align:center}
+  .course-content .list{text-align:left;display:inline-block}
+}
+@media (max-width:640px){
+  .nav .menu{position:absolute;right:12px;top:62px;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px;flex-direction:column;gap:8px;min-width:220px;display:none}
+  .nav .menu[aria-expanded="true"]{display:flex}
+  .nav-toggle{display:inline-flex}
+  .cards-4,.gallery,.testimonials{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column}
+  #precare{padding-top:56px;padding-bottom:56px}
+  .cta-sticky .btn{min-width:200px;padding-block:9px;padding-inline:18px;font-size:15px}
+}
+@media (max-width:520px){
+  .price-sub{font-size:12.5px}
+  .tooltip{width:min(92vw,360px);font-size:13.5px;padding:12px 14px}
+}
+@media (max-width:420px){
+  html,body{max-width:100%;overflow-x:hidden}
+  .container{width:100%;padding-inline:12px}
+}
+/* ===== Before/After — compact, elegant ===== */
+.ba-grid.tight{
+  display:grid;
+  gap:18px;                           /* було багато — зменшили */
+  grid-template-columns: repeat(2,minmax(0,1fr));
+}
+@media (max-width: 900px){ .ba-grid.tight{ grid-template-columns: 1fr; } }
+
+.ba-card{
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset;
+}
+
+.ba-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; margin-bottom:10px;
+}
+.ba-title{ margin:0; font-size:18px; line-height:1.2; }
+.ba-tags{
+  display:flex; gap:6px; flex-wrap:wrap; list-style:none; margin:0; padding:0;
+}
+.ba-tags li{
+  font-size:12px; color: var(--muted);
+  padding:4px 8px; border-radius:999px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+/* slider keeps your original look but tighter radius */
+.ba-card .ba-slider{
+  border-radius:12px; box-shadow: var(--shadow);
+  aspect-ratio: 4 / 3;                /* стабільна висота */
+  margin-bottom:10px;                  /* менше повітря */
+}
+
+.ba-note{
+  margin:0; font-size:14px; color: var(--muted);
+}
+.ba-note strong{ color: var(--text); font-weight:600; }
+
+/* optional: slightly smaller handle dot */
+.ba-slider .handle::before{ width:24px; height:24px; }
+/* ===== PORTFOLIO GRID ===== */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* усі елементи мають однакові кути та тінь */
+.portfolio-photo img,
+.ba-slider {
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* трохи щільніше розміщення слайдерів */
+.ba-item {
+  overflow: hidden;
+  border-radius: 14px;
+  position: relative;
+}
+
+/* адаптація для мобільних */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    gap: 14px;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* hover ефект для звичайних фото */
+.portfolio-photo img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.portfolio-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+/* 2-column pricing layout */
+.price-table--2col .price-row {
+  /* тепер тільки 2 колонки: назва + значення справа */
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+/* ліва колонка */
+.price-table--2col .price-label {
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* права колонка */
+.price-table--2col .price-value {
+  text-align: right;
+  color: var(--accent-2);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* якщо текст довгий (наприклад Brickell + опис), не дай йому переноситися під лейбл */
+@media (max-width:480px){
+  .price-table--2col .price-value {
+    white-space: normal;
+    text-align: right;
+  }
+}
+/* ===== Common Questions layout fix ===== */
+.common-questions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .common-questions-grid {
+    grid-template-columns: 1fr; /* на телефоні — одна колонка */
+  }
+}
+/* ===== Course Lead Quiz Card ===== */
+.course-lead-card {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;                      /* центруємо */
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 24px 20px;
+  color: var(--text);
+}
+
+/* робимо поля й кнопки не прилипшими до країв */
+.course-lead-card .quiz-step + .quiz-step {
+  margin-top: 0;
+}
+
+.course-lead-card .quiz-title {
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
+.course-lead-card .quiz-sub {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.course-lead-card .quiz-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.course-lead-card .chip {
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 12px 14px;
+  text-align: left;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.course-lead-card .chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1b1b1c;
+}
+
+.course-lead-card .field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.course-lead-card .field span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.course-lead-card .field input {
+  width: 100%;
+  background: #101012;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: border .2s ease, box-shadow .2s ease;
+}
+
+.course-lead-card .field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(231,178,166,.15);
+}
+
+.course-lead-card .error {
+  color: var(--error);
+  min-height: 18px;
+  font-size: 13px;
+}
+
+/* прогрес бар зверху */
+.course-lead-card .quiz-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.course-lead-card .quiz-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.course-lead-card .quiz-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width .25s ease;
+}
+
+.course-lead-card .quiz-step-count {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+  min-width: 32px;
+  text-align: right;
+}
+
+.course-lead-card .quiz-step {
+  display: none;
+}
+
+.course-lead-card .quiz-step.is-active {
+  display: block;
+}
+
+/* кнопки Back / Next по центру, однакові відступи */
+.course-lead-card .quiz-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.course-lead-card .quiz-nav .btn[disabled],
+.course-lead-card #cQuizSubmit[disabled] {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* send + success msg */
+.course-lead-card .quiz-actions.two-col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.course-lead-card .form-success {
+  color: var(--success);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* дрібні адаптивні правки */
+@media (min-width:480px){
+  .course-lead-card {
+    padding: 28px 30px 24px;
+    border-radius: 16px;
+  }
+  .course-lead-card .quiz-title {
+    font-size: 17px;
+  }
+  .course-lead-card .quiz-grid {
+    gap: 12px;
+  }
+}
+
+@media (min-width:768px){
+  .course-lead-card .quiz-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* але останній ряд "Not sure / need advice" хай буде на всю ширину */
+  #cStep1Options .chip:last-child {
+    grid-column: 1 / -1;
+  }
+  /* досвід хай все одно 1 колонкою лишається, бо їх тільки 3 */
+  #cStep2Options {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* === widen and center the course quiz card === */
+.course-lead-card {
+  width: 100%;
+  max-width: 780px; /* було 520px — тепер значно ширше */
+  margin: 0 auto; /* по центру */
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 36px; /* трохи більші внутрішні відступи */
+  color: var(--text);
+}
+
+@media (min-width: 1024px) {
+  .course-lead-card {
+    max-width: 880px; /* на великих екранах ще трохи ширше */
+    padding: 40px 44px;
+  }
+}
+
+/* щоб сама секція займала більше простору */
+#course-lead.section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+/* ===== Training Lead Full-Width Quiz ===== */
+
+.lead-flex-card {
+  display: grid;
+  gap: 22px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  color: var(--text);
+}
+
+@media (min-width:768px){
+  .lead-flex-card {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 28px 30px;
+  }
+}
+
+.lead-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lead-col-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.lead-col-sub {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* chip group */
+.lead-chip-group {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width:480px){
+  .lead-chip-group {
+    gap: 12px;
+  }
+}
+
+.chip {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1b1b1c;
+}
+
+/* form fields on right column */
+.lead-col .field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.lead-col .field span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lead-col .field input {
+  width: 100%;
+  background: #101012;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: border .2s ease, box-shadow .2s ease;
+}
+
+.lead-col .field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(231,178,166,.15);
+}
+
+.error {
+  color: var(--error);
+  min-height: 18px;
+  font-size: 13px;
+}
+
+.lead-submit-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.form-success {
+  color: var(--success);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* tighten on very small screens */
+@media (max-width:480px){
+  .lead-flex-card {
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
+  .lead-col-title {
+    font-size: 15px;
+  }
+  .chip {
+    font-size: 14.5px;
+    padding: 11px 12px;
+  }
+  .lead-col .field input {
+    font-size: 14.5px;
+    padding: 11px 12px;
+  }
+}
+
+/* disable look for buttons if blocked */
+.lead-submit-wrap .btn[disabled] {
+  opacity: .45;
+  cursor: not-allowed;
+}
+/* ===== STEP QUIZ CARD (wider, centered) ===== */
+
+.course-lead-card {
+  width: 100%;
+  max-width: 880px;          /* ширше ніж оригінал */
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 28px 24px;
+  color: var(--text);
+}
+
+@media (min-width:1024px){
+  .course-lead-card {
+    max-width: 900px;
+    padding: 40px 36px 28px;
+  }
+}
+
+/* трішки більше повітря навколо секції */
+#course-lead.section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+/* progress row */
+.lead-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.lead-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.lead-progress-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width .25s ease;
+}
+.lead-progress-step {
+  color: var(--muted);
+  font-size: 14px;
+  min-width: 32px;
+  text-align: right;
+}
+
+/* steps */
+.lead-step {
+  display: none;
+}
+.lead-step.is-active {
+  display: block;
+}
+
+.lead-q-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text);
+}
+.lead-q-sub {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* chip options */
+.lead-chip-group {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.chip {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1b1b1c;
+}
+
+/* fields on step 3 */
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.field span {
+  color: var(--muted);
+  font-size: 14px;
+}
+.field input {
+  width: 100%;
+  background: #101012;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: border .2s ease, box-shadow .2s ease;
+}
+.field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(231,178,166,.15);
+}
+
+.lead-note {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* errors + success */
+.error {
+  color: var(--error);
+  min-height: 18px;
+  font-size: 13px;
+}
+.form-success {
+  color: var(--success);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* nav row */
+.lead-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.lead-nav-btn {
+  min-width: 80px;
+  justify-content: center;
+}
+
+/* submit row */
+.lead-submit-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+.lead-submit-wrap .btn[disabled] {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* responsive tweaks */
+@media (max-width:480px){
+  .course-lead-card {
+    border-radius: 16px;
+    padding: 24px 20px 20px;
+  }
+  .lead-q-title {
+    font-size: 17px;
+  }
+  .chip {
+    font-size: 14.5px;
+    padding: 12px 14px;
+  }
+  .field input {
+    font-size: 14.5px;
+    padding: 12px;
+  }
+  .lead-nav {
+    justify-content: space-between;
+  }
+}
+/* заблоковані інпут поля після відправки */
+.field input[disabled] {
+  background: #1a1a1d;
+  color: var(--muted);
+  border-color: rgba(255,255,255,.06);
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+/* чіпи після відправки */
+.chip.is-locked {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* кнопка Edit після відправки виглядає як звичайна кнопка */
+.btn--edit {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+}
+.btn--edit:active {
+  transform: translateY(1px);
+}
+.course-lead-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* фото зроблене більшим */
+.course-lead-image {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-lead-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0,0,0,.3);
+  object-fit: cover;
+}
+
+/* форма */
+.course-lead-content {
+  flex: 1 1 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .course-lead-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-lead-image {
+    order: -1;
+  }
+
+  .course-lead-image img {
+    max-width: 100%;
+  }
+}
+/* ===== REVIEWS SECTION (FULL-WIDTH DARK STRIP) ===== */
+.reviews-section {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(30,30,30,0.6) 0%, rgba(15,15,15,1) 60%) ,
+              linear-gradient(to bottom, #0f0f0f 0%, #141414 100%);
+  color: #fff;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.reviews-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+.reviews-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  /* було overflow: hidden; замінюємо на auto по X */
+  overflow-x: auto;
+  overflow-y: visible;
+
+  margin-top: 20px;
+
+  /* для плавного свайпу на тач */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+
+  /* сховати скролбар в більшості браузерів */
+  scrollbar-width: none; /* Firefox */
+}
+.reviews-slider::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+
+/* track is flex row of cards */
+.reviews-track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+  transition: transform 0.5s ease;
+
+  /* важливо: не даємо треку стискатися по ширині,
+     щоб був що скролити */
+  flex-shrink: 0;
+}
+
+
+.review-card {
+  flex: 0 0 340px;
+  background: #1b1b1b;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  color: #e0e0e0;
+}
+
+.review-author {
+  font-weight: 500;
+  color: #f0b8a8;
+}
+
+/* ===== ARROWS (perfect circles) ===== */
+/* ===== ARROWS (clean centered circles) ===== */
+.review-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-arrow:hover {
+  background: #f0b8a8;
+  color: #000;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.review-arrow.left {
+  left: 20px;
+}
+
+.review-arrow.right {
+  right: 20px;
+}
+
+
+/* ===== FADE EDGES (softer gradient, no hard edge) ===== */
+.reviews-fade {
+  position: absolute;
+  top: 0;
+  width: 140px;
+  max-width: 30%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: radial-gradient(circle at 0% 50%, rgba(15,15,15,1) 0%, rgba(15,15,15,0.9) 30%, rgba(15,15,15,0) 70%);
+}
+
+.fade-right {
+  right: 0;
+  background: radial-gradient(circle at 100% 50%, rgba(15,15,15,1) 0%, rgba(15,15,15,0.9) 30%, rgba(15,15,15,0) 70%);
+}
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .review-card {
+    flex: 0 0 280px;
+  }
+  .reviews-inner {
+    padding: 0 20px;
+  }
+  .reviews-fade {
+    width: 80px;
+  }
+  .review-arrow {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 24px;
+  }
+}
+.reviews-window {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  scrollbar-width: none;        /* Firefox: ховаємо скролбар */
+}
+.reviews-window::-webkit-scrollbar {
+  display: none;                /* Chrome/Safari: ховаємо скролбар */
+}
+
+/* трек тепер просто flex-ряд, БЕЗ transform тут */
+.reviews-track {
+  display: flex;
+  gap: 32px;
+  padding: 20px 0;
+  /* прибери звідси будь-які:
+     transform: ...;
+     transition: ...;
+     justify-content: center;
+  */
+}
+
+/* картки лишаються як були */
+.review-card {
+  flex: 0 0 340px;
+  /* ... твій інший стиль без змін ... */
+}
+@media (max-width:768px){
+  .review-card {
+    flex: 0 0 280px;
+  }
+}
+
+/* ===== CONTACT PAGE (soft card full width) ===== */
+
+:root {
+  --contact-bg-soft: radial-gradient(circle at 20% 0%, rgba(231,178,166,.08) 0%, rgba(0,0,0,0) 60%),
+                     linear-gradient(180deg,#1a1a1c 0%,#141416 100%);
+  --contact-card-bg: rgba(28,28,31,.95); /* теплий темний блок */
+  --contact-card-border: rgba(255,255,255,.08);
+  --contact-chip-bg: rgba(255,255,255,.06);
+  --contact-chip-border: rgba(255,255,255,.12);
+  --contact-bullet-bg: radial-gradient(circle at 30% 30%, #1a1a1d 0%, #0d0d0f 80%);
+}
+
+/* секція-фон */
+.contact-hero {
+  background: var(--contact-bg-soft);
+  padding-top: 64px;
+  padding-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* уся велика картка */
+.contact-card-wide {
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+  border: 1px solid var(--contact-card-border);
+  background: var(--contact-card-bg);
+  padding: 24px 24px 20px;
+  color: var(--text);
+  max-width: 100%;
+}
+
+/* м'якше відчуття країв (схоже на твій скрін) */
+.contact-card-soft {
+  background: radial-gradient(circle at 10% 10%, rgba(231,178,166,.07) 0%, rgba(28,28,31,.95) 60%);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* 2-колоночна сітка зверху (текст+контакти | карта) */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 24px;
+}
+
+@media (max-width:900px){
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ліва колонка */
+.contact-main {
+  min-width: 0;
+}
+
+.contact-headline {
+  font-size: clamp(22px,2vw,28px);
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.contact-lead {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* список контактів (адреса, години, телефон...) */
+.contact-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-bullet {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--contact-bullet-bg);
+  box-shadow: 0 10px 30px rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.08) inset;
+  border: 1px solid rgba(255,255,255,.12);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+}
+
+.contact-bullet svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text);
+}
+
+.contact-col {
+  min-width: 0;
+}
+
+.contact-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.contact-value {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.accent-link {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+.accent-link:hover {
+  color: var(--accent);
+}
+
+/* права колонка з мапою */
+.contact-map-wrap {
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.map-frame iframe {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-meta {
+  padding: 14px 16px;
+  background: rgba(20,20,22,.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: var(--text);
+}
+
+.map-meta-left {
+  min-width: 0;
+}
+
+.map-meta-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--accent-2);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.map-meta-value {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.map-open-btn {
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  min-width: max-content;
+}
+.map-open-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1b1b1c;
+}
+
+/* НИЖНІ CTA КНОПКИ (Instagram DM / Email / Call) */
+.contact-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.contact-cta-btn {
+  flex: 1 1 0;
+  min-width: 180px;
+  text-align: center;
+  background: transparent;
+  color: var(--text);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  box-shadow: 0 10px 25px rgba(0,0,0,.6);
+  background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,.07) 0%, rgba(0,0,0,0) 60%);
+}
+.contact-cta-btn:hover {
+  background: rgba(255,255,255,.07);
+  color: var(--text);
+}
+
+.contact-cta-btn--main {
+  background: var(--accent);
+  border: none;
+  color: #1b1b1c;
+  box-shadow: 0 20px 30px rgba(231,178,166,.4);
+}
+.contact-cta-btn--main:hover {
+  filter: brightness(1.05);
+}
+
+.contact-lang-note {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+/* === INSTAGRAM CTA BUTTON — only text changes on hover === */
+.contact-cta-btn--main {
+  background-color: var(--accent);   /* рожевий фон */
+  border: none;
+  color: #1b1b1c;                   /* темний текст */
+  box-shadow: 0 20px 30px rgba(231,178,166,.4);
+  transition: color 0.25s ease;     /* тільки текст */
+}
+
+.contact-cta-btn--main:hover {
+  background-color: var(--accent);  /* фон НЕ змінюється */
+  color: #fff;                      /* текст стає білим */
+}
+.reviews-fade {
+  position: absolute;
+  top: 0;
+  width: 160px;           /* трошки ширше, плавніший перехід */
+  max-width: 32%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ліва завіса */
+.fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(16,16,17,1) 0%,
+    rgba(16,16,17,0.85) 30%,
+    rgba(16,16,17,0.4) 60%,
+    rgba(16,16,17,0) 100%
+  );
+}
+
+/* права завіса */
+.fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(16,16,17,1) 0%,
+    rgba(16,16,17,0.85) 30%,
+    rgba(16,16,17,0.4) 60%,
+    rgba(16,16,17,0) 100%
+  );
+}
+
+@media (max-width:768px){
+  .reviews-fade {
+    width: 100px;
+    max-width: 40%;
+  }
+}
+/* ===== MOBILE SWIPE MODE FOR REVIEWS ===== */
+
+/* коли активовано reviews-slider--mobile:
+   - даємо горизонтальний скрол всередині слайдера
+   - ховаємо системний скролбар
+*/
+.reviews-slider--mobile {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.reviews-slider--mobile::-webkit-scrollbar {
+  display: none;
+}
+
+/* сам трек у мобільному режимі:
+   - без translateX (JS його не чіпає)
+   - просто флекс-ряд
+   - з snap, щоб картка ставала по центру при відпусканні свайпу
+*/
+.reviews-track--mobile {
+  display: flex;
+  gap: 24px;
+  padding: 0 16px;
+  scroll-snap-type: x mandatory;
+  will-change: auto;           /* нам не треба анімацій translateX тут */
+  transition: none !important; /* не анімувати */
+  transform: none !important;  /* не зсувати штучно */
+}
+
+/* картки на мобілці:
+   - робимо їх "екранними", щоб влізали без горизонтального оверфлоу
+   - і вони сніпаються по центру
+*/
+.reviews-track--mobile .review-card {
+  flex: 0 0 80vw;
+  max-width: 80vw;
+  scroll-snap-align: center;
+}
+
+/* трішки ширші на tablet-ish, щоб не були замалі */
+@media (min-width:480px) and (max-width:768px){
+  .reviews-track--mobile .review-card {
+    flex-basis: 320px;
+    max-width: 320px;
+  }
+}
+
+/* на мобілці стрілки все одно ховаються через JS,
+   але дублюємо на CSS для надійності */
+@media (max-width:768px){
+  .review-arrow {
+    display: none !important;
+  }
+}
+.review-card {
+  flex: 0 0 340px;
+  max-width: 340px;
+  /* далі твій існуючий стиль */
+}
+
+/* на маленьких екранах робимо картку трохи вужчою,
+   щоб не вилазила за межі вьюпорта і красивіше свайпалась */
+@media (max-width: 480px) {
+  .review-card {
+    flex: 0 0 80vw;
+    max-width: 80vw;
+  }
+}
+@media (max-width: 768px) {
+  .reviews-fade {
+    display: none !important;
+  }
+}
