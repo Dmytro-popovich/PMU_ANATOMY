@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pre- & After-care — PERMA Permanent Makeup</title>
+<meta name="description" content="Clear pre-care and after-care instructions for brows, lips, and lash line procedures." />
+<link rel="canonical" href="https://your-domain.com/precare.html" />
+<link rel="icon" href="./img/5.png" type="image/png" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header class="site-header" data-elevate>
+<div class="container header-inner">
+<a href="./index.html" class="logo" aria-label="PERMA — Home"><img src="./img/4.png" alt="PERMA Logo"></a>
+<nav class="nav" aria-label="Main navigation">
+<button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+<ul id="primary-menu" class="menu">
+<li><a href="./services.html">Services</a></li>
+<li><a href="./portfolio.html">Portfolio</a></li>
+<li><a href="./pricing.html">Pricing</a></li>
+<li><a href="./course.html">Training</a></li>
+<li><a href="./reviews.html">Reviews</a></li>
+<li><a href="./policies.html">Policies</a></li>
+<li><a href="./contacts.html">Contact</a></li>
+<li><a href="./quiz.html" class="btn btn--sm">Book</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+
+<section id="precare" class="section">
+<div class="container">
+<header class="section-header"><h1 class="section-title">Pre- & After-care</h1><p class="section-subtitle">Only what matters, in tabs.</p></header>
+<div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:14px;">
+<button class="chip care-tab active" data-tab="pre">✨ Pre-care</button>
+<button class="chip care-tab" data-tab="after">🩹 After-care</button>
+<button class="chip care-tab" data-tab="lips">💋 Lips</button>
+<button class="chip care-tab" data-tab="brows">✨ Brows</button>
+<button class="chip care-tab" data-tab="timeline">📆 Timeline</button>
+</div>
+<div class="care-panels">
+<!-- Copy of your original tab contents -->
+<div class="care-panel" data-tab="pre"> ... (same cards as original) ... </div>
+<div class="care-panel" data-tab="after" hidden> ... </div>
+<div class="care-panel" data-tab="lips" hidden> ... </div>
+<div class="care-panel" data-tab="brows" hidden> ... </div>
+<div class="care-panel" data-tab="timeline" hidden> ... </div>
+</div>
+</div>
+</section>
+
+
+<footer class="site-footer"><div class="container footer-inner"><p>© <span id="year"></span> PERMA — Anatomy Permanent Makeup</p><a href="#top" class="to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="./script.js" defer></script>
+</body>
+</html>
